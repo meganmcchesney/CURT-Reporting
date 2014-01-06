@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isAdmin = ViewBag.isAdmin ?? false;
+}
+
+<div class="span3">
+    <ul class="nav nav-stacked sidenav">
+        <li>
+            <a href="/reports/PIES">ACES / PIES</a>
+            <a href="/reports/CURTReports">CURT Reports</a>
+            <a href="/reports/GoogleBase">Google Base</a>
+            @if(isAdmin){
+            <a href="/Loadsheet">Loadsheets</a>
+            }
+        </li>
+        <li><a href="#" class="muted">More to come...</a></li>
+    </ul>
+</div>
+
+<div class="span8">
+    @if(ViewBag.err != null){
+    <div class="alert alert-error">@ViewBag.err</div>
+    }
+     @RenderBody()
+</div>

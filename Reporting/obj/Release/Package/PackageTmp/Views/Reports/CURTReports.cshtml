@@ -1,0 +1,218 @@
+﻿@using Reporting.Models;
+@{
+    ViewBag.Title = "CURTReports";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+    var reportNames1 = ViewBag.reportNames1;
+    var reportNames2 = ViewBag.reportNames2;
+    var administratorCheck = ViewBag.administratorCheck ?? false;
+}
+
+<script src="~/Scripts/reportsHelpInfo.js"></script>
+
+
+<h2>CURT Reports</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#basic">Data</a>
+    </li>
+    <li>
+        <a href="#cat">Categories</a>
+    </li>
+    <li>
+        <a href="#tax">Media</a>
+    </li>
+
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="basic">
+        <div class="well well-large">
+            <h4 style="display: inline">Product Information</h4>
+
+            <a href="#" class="helpInfoShow">Info</a>
+
+            <div class="helpInfo">
+                The CURT product information report has extensive part-specific data.
+                            <br />
+                <br />
+
+                <strong>Includes</strong><br />
+                <em>Part attributes, parent and child categories, related parts, vehicleIDs, non-customer specific pricing, weight and dimensions, digital asset information and content bullets from 
+                            <a href="http://www.curtmfg.com" target=" _blank">curtmfg.com</a>.
+                </em>
+                <br />
+                <br />
+                <strong>Details</strong>
+                <ul>
+                    <li>Use the categoryID in this report to match category information in the Category report.</li>
+                    <li>Use the vehicleID in this report to match application data in the Vehicle Applications report below.</li>
+                    <li>This report is available to save to your desktop in .xml format, which is compatible with Microsoft Excel.
+                    </li>
+                </ul>
+
+            </div>
+            <hr />
+
+            <form action="/reports/GenerateDataReport" method="post" class="form-inline" id="piesreportform">
+
+                <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date*" />
+
+                <div class="control-group pull-right" style="display: inline">
+                    <label for="method">
+                        File Type
+                    </label>
+                    <select name="method" id="method">
+                        <option value="">XML</option>
+                        <!--<option value="csv">CSV</option>-->
+                    </select>
+                   
+                </div>
+                <span class="help-block"><small><em>*Leave blank for a complete product information report.</em></small></span>
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+            </form>
+        </div>
+
+
+        <div class="well well-large">
+            <h4 style="display: inline">Vehicle Applications</h4>
+            <a href="#" class="helpInfoShow">Info</a>
+            <div class="helpInfo">
+                <p>
+                    <strong>Recommended</strong><br />
+                    Download this vehicle applications report to complement to the product information report above. 
+                        The vehicleID in the product information report matches the vehicleID in the vehicle application report. 
+                        <br />
+                    <br />
+                    <strong>Includes</strong><br />
+                    <em>Make/Model/Style information and application specific attributes such as drilling requirements, visibility and installation time.
+                    </em>
+                </p>
+               
+                <strong>Details</strong>
+                <ul>
+                    <li>Vehicle application data is ACES compliant.</li>
+
+                    <li>This report is available to save to your desktop in either .xml or .csv format, which are both compatible with Microsoft Excel.
+                    </li>
+                </ul>
+
+            </div>
+            <hr />
+
+            <form action="/reports/GenerateVehicleReport" method="post" class="form-inline" id="piesreportform">
+                <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date*" />
+
+                <div class="control-group pull-right" style="display: inline">
+                    <label for="method">
+                        File Type
+                    </label>
+                    <select name="method" id="method">
+                        <option value="">XML</option>
+                        <option value="csv">CSV</option>
+                    </select>
+                </div>
+                <span class="help-block"><small><em>*Leave blank for a complete vehicle applications report.</em></small></span>
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+            </form>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="cat">
+
+        <div class="well well-large">
+            <h4 style="display: inline">Category Hierarchy</h4>
+            <a href="#" class="helpInfoShow">Info</a>
+            <div class="helpInfo">
+                <p>
+                    CURT Categories are branched from eight parent categories. 
+                </p>
+                <strong>Includes</strong>
+                <br />
+                <em>Nested category structure and part numbers.
+                </em>
+                <br />
+                <br />
+                <strong>Details</strong>
+                <ul>
+                    <li>Part numbers are included in only the bottom-level categories.</li>
+                    <li>This report is only available in .xml due to the nested structure.</li>
+                </ul>
+            </div>
+            <hr />
+            <form action="/reports/CategoryReport" method="post" class="form-inline" id="piesreportform">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="tab-pane" id="tax">
+        <div class="well well-large">
+            <h4 style="display: inline">Media Reports</h4>
+            <a href="#" class="helpInfoShow">Info</a>
+            <div class="helpInfo">
+                <p>
+                    Media-specific reports can be chosen by date modified or for every CURT part number. (Leave the start date blank for all part numbers). You may only download one file at a time.  
+                    Media Reports are available in .csv only, but they open nicely in Excel. 
+                    Please be patient as a full report may not generate if you interrupt the process. 
+
+                </p>
+                <strong>Includes</strong>
+                <br /> 
+                <em>Part date modified, part number and part-specific media file paths.
+                </em>
+                <br />
+                <br />
+                <strong>Details</strong>
+                <ul>
+                    <li>There are an average of 15 image files associated with each part number.</li>
+                    <li>All files may be served from CURT's secure ftp. See the eBusiness Resources section of 
+                                <a href="http://dealers.curtmfg.com/Dealer/Index/7/eBusiness%20Resources">Dealers.curtmfg.com</a> for more information.
+                    </li>
+                </ul>
+            </div>
+            <hr />
+
+            <h4>By Date Modified</h4>
+            <div class="tab-pane" id="dateMod">
+                <form action="/reports/ChooseReports" method="post" class="form" id="piesreportform">
+                    
+                    <ul style="list-style: none;">
+                        @foreach (var x in reportNames2)
+                        {
+                            <li>
+                                <input type="radio" name="reportname" value="@x"/>
+                                @x
+                            </li>
+                        
+                        }
+                    </ul>
+                     <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date*" /> 
+                    <span class="help-block"><small><em>*Leave blank for full report.</em></small></span>
+                  
+                    <hr />
+                    <h4>Full Report</h4>
+
+                    <ul style="list-style: none;">
+                        @foreach (var x in reportNames1)
+                        {
+                            <li>
+                                <input type="radio" name="reportname" value="@x"/>
+                                @x
+                            </li>
+                        }
+                    </ul>
+                    <hr />
+
+                    <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate" /> 
+                   
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

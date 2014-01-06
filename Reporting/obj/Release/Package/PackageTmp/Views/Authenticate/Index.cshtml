@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="auth-box">
+	<form class="auth-form span7" method="post" action="/auth">
+		<h3>Login to access Reporting Services</h3>
+
+		@if(ViewBag.Error != null && ViewBag.Error.Length > 0){
+			<div class="alert alert-error">
+				<a href="#" class="close" data-dismiss="alert">x</a>
+				<h4 class="alert-heading">Warning!</h4>
+				<span>@ViewBag.Error</span>
+			</div>
+		}
+
+		<label for="email">Enter Customer E-Mail</label>
+		<input type="email" class="span10" id="email" name="email" placeholder="Enter the e-mail address associated with your account">
+
+        <label for="password">Enter Password</label>
+		<input type="password" id="password" class="span10" name="password" placeholder="Enter your password">
+
+		<div class="clearfix"></div>
+        <input type="submit" class="btn btn-success" value="Continue">
+        <label class="checkbox inline muted">
+            <input type="checkbox" id="remember" name="remember" value="1"> Remember me!
+        </label>
+	</form>
+
+	<div class="span4 offset1">
+		<h4>Need Reports?</h4>
+		<blockquote class="pull-right">This tool will help you generate a variety of reports to help you evaluate CURT data and how it integrates with your business.</blockquote>
+	</div>
+
+</div>

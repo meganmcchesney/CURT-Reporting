@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "PIES Reporting";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+}
+<h2>ACES / PIES</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#basic">ACES</a>
+    </li>
+    <li>
+        <a href="#tax">PIES</a>
+    </li>
+
+</ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="basic">
+         
+           <p>Aftermarket Catalog Enhanced Standard Report</p>
+
+            <form action="/reports/GenerateACES" method="post" class="form" id="piesreportform">
+                
+                <!--<input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date*" />
+                <span class="help-block"<p><small><em>*Leave blank for a complete applications report.</em></small></p></span>-->
+                <div class="well well-large">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                </div> 
+
+            </form>
+        </div>
+   
+        <div class="tab-pane" id="tax">
+        
+            <p>Product Information Exchange Standard Report</p>
+
+            <form action="/reports/GeneratePIES" method="post" class="form" id="piesreportform">
+              
+                <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date*" />
+                <span class="help-block"<p><small><em>*Leave blank for a complete product report.</em></small></p></span>
+                <div class="well well-large">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+
+    List<Reporting.Models.Helper.DisplayableCountry> countries = ViewBag.Countries ?? new List<Reporting.Models.Helper.DisplayableCountry>();
+}
+
+
+<h2>Google Base</h2> 
+
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Required!</strong> Ensure you have uploaded your pricing information at <a href="http://pricing.curtmfg.com">pricing.curtmfg.com</a>
+</div>
+<p>Generate an XML report formatted for Google Merchant Center</p>
+
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#basic">Basic</a>
+    </li>
+    <li>
+        <a href="#tax">Taxes</a>
+    </li>
+    <li>
+        <a href="#link">Part Link</a>
+    </li>
+</ul>
+
+<form class="form-horizontal" method="post" action="/Reports/Generate">
+    <div class="tab-content">
+        <div class="tab-pane active" id="basic">
+            <div class="control-group">
+                <label class="control-label" for="feedTitle">Feed Title</label>
+                <div class="controls">
+                    <input type="text" class="input-xxlarge" name="feedTitle" id="feedTitle" placeholder="Example - Online Store"/>
+                    <span class="help-block">Create a Title for this specific feed.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feedLink">Your Website</label>
+                <div class="controls">
+                    <input type="url" class="input-xxlarge" name="feedLink" id="feedLink" placeholder="http://www.example.com"/>
+                    <span class="help-block">Specify your website URL.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feedDesc">Feed Description</label>
+                <div class="controls">
+                    <textarea class="input-xxlarge" rows="5" cols="60" name="feedDesc" id="feedDesc" placeholder="This is a sample feed containing the required and recommended attributes for a variety of different products"></textarea>
+                    <span class="help-block">A minimal description of the purpose of this feed.</span>
+                </div>
+            </div>      
+        </div>
+        <div class="tab-pane" id="tax">
+            <div class="form-inline tax-form clearfix">
+                <div class="pull-left span9">
+                    <select class="country span4">
+                        <option value=""></option>
+                        @foreach(var c in countries){
+                            <option value="@c.Abbr">@c.Name</option>
+                        }
+                    </select>
+                    <select class="state span4">
+                    </select>
+                    <div class="input-append inline">
+                        <input class="span3 tax" type="text" placeholder="5.0"><span class="add-on">%</span>
+                    </div>
+                </div>
+            
+                <button class="btn pull-left btn-success">Add Tax</button>
+            </div>
+            <hr />
+            <table class="tax-table table table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>Percent</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty">
+                        <td colspan="4" class="muted align-center">No tax records</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="link">
+            <div class="control-group">
+                <label class="control-label" for="partLink">Part Link</label>
+                <div class="controls">
+                    <input type="text" class="input-xxlarge" name="partLink" id="partLink" placeholder="http://www.example.com/part/[partID]"/>
+                    <span class="help-block">This will help to create links for each individual CURT Product on your website. You will want to place [partID] where the CURT Part # would appear in the URL. <p><small><em>If you do not have a page that can match these credentials, simply provide a URL to a different page on your site.</em></small></p></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="well well-large">
+        <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+    </div>
+    <input type="hidden" name="tax" class="tax-holder"/>
+</form>
+
+

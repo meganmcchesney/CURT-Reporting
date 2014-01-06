@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "ACES Reporting";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+}
+
+<h2>ACES</h2>
+
+<form action="/reports/GenerateACES" method="post" class="form" id="piesreportform">
+
+    <p>
+        <a href="/Reports/GenerateACES">Generate All Applications Report</a>   
+    </p>
+
+    <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Or Enter a Start Date" />
+
+    <div class="well well-large">
+    <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+    </div> 
+
+</form>
+

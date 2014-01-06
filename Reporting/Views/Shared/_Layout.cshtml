@@ -1,0 +1,104 @@
+﻿@{
+    
+    Reporting.Models.Customer customer = ViewBag.Customer;
+    if (customer == null) {
+        customer = new Reporting.Models.Customer();
+    }
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CURT Manufacturing, LLC</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    @Styles.Render("~/Content/main-css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+    <div class="container">
+        <header>
+            <a href="/Reports" title="CURT Manufacturing, LLC" class="logo">
+                <img src="/Content/img/logo.png">
+            </a>
+
+            <span class="sub-title">Reporting Services - Beta</span>
+        </header>
+        
+
+
+        <section class="content">
+            @if (customer.customerID > 0) {
+                <div class="navbar navbar-static-top">
+                    <div class="navbar-inner">
+                        <ul class="nav pull-left">
+                            <li class="active">
+                                <a href="/Reports">Reports</a>
+                            </li>
+                        </ul>
+                        
+                        <ul class="nav pull-right">
+                            <li class="divider-vertical"></li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>    
+            }
+            <div class="container-fluid">
+                <div class="page-content row-fluid">
+                    @RenderBody()    
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="info span9">
+                <span>Copyright © 2013 CURT Manufacturing, LLC</span>
+                <span>Developed By:
+                        <a href="mailto:websupport@curtmfg.com" title="Support">CURT Labs
+                        </a>
+                </span>
+            </div>
+            <div class="span2">
+                <img src="/Content/img/curtLogo_onWhite.png">
+            </div>
+        </footer>
+    </div>
+
+    <div id="preparing-file-modal" title="Preparing report..." style="display: none;">
+    We are preparing your report, please wait...
+    <div class="ui-progressbar-value ui-corner-left ui-corner-right" style="width: 100%; height:22px; margin-top: 20px;"></div>
+    </div>
+ 
+    <!--<div id="error-modal" title="Error" style="display: none;">
+        There was a problem generating your report, please try again.
+    </div>-->
+
+    @Scripts.Render("~/bundles/boilerplate")
+    <script src="/Scripts/main.js"></script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq = [['_setAccount', 'UA-36857389-1'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+</body>
+</html>

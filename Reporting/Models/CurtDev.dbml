@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CurtDev" Class="CurtDevDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLExpress;Initial Catalog=CurtDev;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CurtDevConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="cust_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="stateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contact_person" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="dealer_type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="latitude" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="longitude" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="website" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="customerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isDummy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="parentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="searchURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="eLocalURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="logo" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="address2" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="postal_code" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="mCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="salesRepID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="APIKey" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="tier" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_CustomerLoadsheet" Member="CustomerLoadsheets" ThisKey="cust_id" OtherKey="cust_ID" Type="CustomerLoadsheet" />
+      <Association Name="CustomerPricing_Customer" Member="CustomerPricing" ThisKey="customerID" OtherKey="cust_id" Type="CustomerPricing" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Part" Member="Parts">
+    <Type Name="Part">
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="dateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="shortDesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="oldPartNumber" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="priceCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="featured" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ACESPartTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Part_ContentBridge" Member="ContentBridges" ThisKey="partID" OtherKey="partID" Type="ContentBridge" />
+      <Association Name="Part_PartImage" Member="PartImages" ThisKey="partID" OtherKey="partID" Type="PartImage" />
+      <Association Name="Part_PartAttribute" Member="PartAttributes" ThisKey="partID" OtherKey="partID" Type="PartAttribute" />
+      <Association Name="Part_vcdb_VehiclePart" Member="vcdb_VehicleParts" ThisKey="partID" OtherKey="PartNumber" Type="vcdb_VehiclePart" />
+      <Association Name="Part_PartPackage" Member="PartPackages" ThisKey="partID" OtherKey="partID" Type="PartPackage" />
+      <Association Name="Part_Price" Member="Prices" ThisKey="partID" OtherKey="partID" Type="Price" />
+      <Association Name="Part_PartVideo" Member="PartVideos" ThisKey="partID" OtherKey="partID" Type="PartVideo" />
+      <Association Name="Part_VehiclePart" Member="VehicleParts" ThisKey="partID" OtherKey="partID" Type="VehiclePart" />
+      <Association Name="Part_CatPart" Member="CatParts" ThisKey="partID" OtherKey="partID" Type="CatPart" />
+      <Association Name="Part_RelatedPart" Member="RelatedParts" ThisKey="partID" OtherKey="partID" Type="RelatedPart" />
+      <Association Name="Part_Class" Member="Classes" ThisKey="classID" OtherKey="classID" Type="Class" />
+      <Association Name="CustomerPricing_Part" Member="CustomerPricing" ThisKey="partID" OtherKey="partID" Type="CustomerPricing" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Content" Member="Contents">
+    <Type Name="Content">
+      <Column Name="contentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Content_ContentBridge" Member="ContentBridges" ThisKey="contentID" OtherKey="contentID" Type="ContentBridge" />
+      <Association Name="ContentType_Content" Member="ContentType" ThisKey="cTypeID" OtherKey="cTypeID" Type="ContentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentBridge" Member="ContentBridges">
+    <Type Name="ContentBridge">
+      <Column Name="cBridgeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="catID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="partID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="contentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Content_ContentBridge" Member="Content" ThisKey="contentID" OtherKey="contentID" Type="Content" IsForeignKey="true" />
+      <Association Name="Part_ContentBridge" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+      <Association Name="Category_ContentBridge" Member="Category" ThisKey="catID" OtherKey="catID" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentType" Member="ContentTypes">
+    <Type Name="ContentType">
+      <Column Name="cTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="allowHTML" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ContentType_Content" Member="Contents" ThisKey="cTypeID" OtherKey="cTypeID" Type="Content" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerPricing" Member="CustomerPricings">
+    <Type Name="CustomerPricing">
+      <Column Name="cust_price_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cust_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="isSale" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sale_start" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="sale_end" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="CustomerPricing_Customer" Member="Customers" ThisKey="cust_id" OtherKey="customerID" Type="Customer" />
+      <Association Name="CustomerPricing_Part" Member="Parts" ThisKey="partID" OtherKey="partID" Type="Part" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartImages" Member="PartImages">
+    <Type Name="PartImage">
+      <Column Name="imageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sizeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sort" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="path" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Part_PartImage" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+      <Association Name="PartImageSize_PartImage" Member="PartImageSize" ThisKey="sizeID" OtherKey="sizeID" Type="PartImageSize" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartImageSizes" Member="PartImageSizes">
+    <Type Name="PartImageSize">
+      <Column Name="sizeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="size" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="dimensions" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="PartImageSize_PartImage" Member="PartImages" ThisKey="sizeID" OtherKey="sizeID" Type="PartImage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartAttribute" Member="PartAttributes">
+    <Type Name="PartAttribute">
+      <Column Name="pAttrID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="field" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Part_PartAttribute" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country" Member="Countries">
+    <Type Name="Country">
+      <Column Name="countryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="abbr" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Country_State" Member="States" ThisKey="countryID" OtherKey="countryID" Type="State" />
+    </Type>
+  </Table>
+  <Table Name="dbo.States" Member="States">
+    <Type Name="State">
+      <Column Name="stateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="state" Member="state1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="abbr" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="countryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Country_State" Member="Country" ThisKey="countryID" OtherKey="countryID" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vcdb_Make" Member="vcdb_Makes">
+    <Type Name="vcdb_Make">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AAIAMakeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MakeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="vcdb_Make_BaseVehicle" Member="BaseVehicles" ThisKey="ID" OtherKey="MakeID" Type="BaseVehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vcdb_Model" Member="vcdb_Models">
+    <Type Name="vcdb_Model">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AAIAModelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModelName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="VehicleTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="vcdb_Model_BaseVehicle" Member="BaseVehicles" ThisKey="ID" OtherKey="ModelID" Type="BaseVehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vcdb_Vehicle" Member="vcdb_Vehicles">
+    <Type Name="vcdb_Vehicle">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubModelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConfigID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AppID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="vcdb_Vehicle_vcdb_VehiclePart" Member="vcdb_VehicleParts" ThisKey="ID" OtherKey="VehicleID" Type="vcdb_VehiclePart" />
+      <Association Name="VehicleConfig_vcdb_Vehicle" Member="VehicleConfig" ThisKey="ConfigID" OtherKey="ID" Type="VehicleConfig" IsForeignKey="true" />
+      <Association Name="Submodel_vcdb_Vehicle" Member="Submodel" ThisKey="SubModelID" OtherKey="ID" Type="Submodel" IsForeignKey="true" />
+      <Association Name="BaseVehicle_vcdb_Vehicle" Member="BaseVehicle" ThisKey="BaseVehicleID" OtherKey="ID" Type="BaseVehicle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vcdb_VehiclePart" Member="vcdb_VehicleParts">
+    <Type Name="vcdb_VehiclePart">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PartNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="vcdb_VehiclePart_Note" Member="Notes" ThisKey="ID" OtherKey="vehiclePartID" Type="Note" />
+      <Association Name="Part_vcdb_VehiclePart" Member="Part" ThisKey="PartNumber" OtherKey="partID" Type="Part" IsForeignKey="true" />
+      <Association Name="vcdb_Vehicle_vcdb_VehiclePart" Member="vcdb_Vehicle" ThisKey="VehicleID" OtherKey="ID" Type="vcdb_Vehicle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vcdb_Year" Member="vcdb_Years">
+    <Type Name="vcdb_Year">
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="vcdb_Year_BaseVehicle" Member="BaseVehicles" ThisKey="YearID" OtherKey="YearID" Type="BaseVehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VehicleConfig" Member="VehicleConfigs">
+    <Type Name="VehicleConfig">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AAIAVehicleConfigID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="VehicleConfig_vcdb_Vehicle" Member="vcdb_Vehicles" ThisKey="ID" OtherKey="ConfigID" Type="vcdb_Vehicle" />
+      <Association Name="VehicleConfig_VehicleConfigAttribute" Member="VehicleConfigAttributes" ThisKey="ID" OtherKey="VehicleConfigID" Type="VehicleConfigAttribute" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VehicleConfigAttribute" Member="VehicleConfigAttributes">
+    <Type Name="VehicleConfigAttribute">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AttributeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VehicleConfigID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="VehicleConfig_VehicleConfigAttribute" Member="VehicleConfig" ThisKey="VehicleConfigID" OtherKey="ID" Type="VehicleConfig" IsForeignKey="true" />
+      <Association Name="ConfigAttribute_VehicleConfigAttribute" Member="ConfigAttribute" ThisKey="AttributeID" OtherKey="ID" Type="ConfigAttribute" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Submodel" Member="Submodels">
+    <Type Name="Submodel">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AAIASubmodelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubmodelName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Submodel_vcdb_Vehicle" Member="vcdb_Vehicles" ThisKey="ID" OtherKey="SubModelID" Type="vcdb_Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Note" Member="Notes">
+    <Type Name="Note">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vehiclePartID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="note" Member="note1" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="vcdb_VehiclePart_Note" Member="vcdb_VehiclePart" ThisKey="vehiclePartID" OtherKey="ID" Type="vcdb_VehiclePart" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConfigAttribute" Member="ConfigAttributes">
+    <Type Name="ConfigAttribute">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ConfigAttributeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="parentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vcdbID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="ConfigAttribute_VehicleConfigAttribute" Member="VehicleConfigAttributes" ThisKey="ID" OtherKey="AttributeID" Type="VehicleConfigAttribute" />
+      <Association Name="ConfigAttributeType_ConfigAttribute" Member="ConfigAttributeType" ThisKey="ConfigAttributeTypeID" OtherKey="ID" Type="ConfigAttributeType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConfigAttributeType" Member="ConfigAttributeTypes">
+    <Type Name="ConfigAttributeType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AcesTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ConfigAttributeType_ConfigAttribute" Member="ConfigAttributes" ThisKey="ID" OtherKey="ConfigAttributeTypeID" Type="ConfigAttribute" />
+      <Association Name="AcesType_ConfigAttributeType" Member="AcesType" ThisKey="AcesTypeID" OtherKey="ID" Type="AcesType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AcesType" Member="AcesTypes">
+    <Type Name="AcesType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="AcesType_ConfigAttributeType" Member="ConfigAttributeTypes" ThisKey="ID" OtherKey="AcesTypeID" Type="ConfigAttributeType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaseVehicle" Member="BaseVehicles">
+    <Type Name="BaseVehicle">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AAIABaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MakeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="BaseVehicle_vcdb_Vehicle" Member="vcdb_Vehicles" ThisKey="ID" OtherKey="BaseVehicleID" Type="vcdb_Vehicle" />
+      <Association Name="vcdb_Make_BaseVehicle" Member="vcdb_Make" ThisKey="MakeID" OtherKey="ID" Type="vcdb_Make" IsForeignKey="true" />
+      <Association Name="vcdb_Model_BaseVehicle" Member="vcdb_Model" ThisKey="ModelID" OtherKey="ID" Type="vcdb_Model" IsForeignKey="true" />
+      <Association Name="vcdb_Year_BaseVehicle" Member="vcdb_Year" ThisKey="YearID" OtherKey="YearID" Type="vcdb_Year" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartPackage" Member="PartPackages">
+    <Type Name="PartPackage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="width" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="length" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dimensionUOM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="weightUOM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="packageUOM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PartPackage_UnitOfMeasure" Member="DimensionUnits" ThisKey="dimensionUOM" OtherKey="ID" Type="UnitOfMeasure" Cardinality="One" />
+      <Association Name="PartPackage_UnitOfMeasure1" Member="weightUnits" ThisKey="weightUOM" OtherKey="ID" Type="UnitOfMeasure" Cardinality="One" />
+      <Association Name="PartPackage_UnitOfMeasure2" Member="PackageUnits" ThisKey="packageUOM" OtherKey="ID" Type="UnitOfMeasure" Cardinality="One" />
+      <Association Name="Part_PartPackage" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Price" Member="Prices">
+    <Type Name="Price">
+      <Column Name="priceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="priceType" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="price" Member="price1" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Part_Price" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UnitOfMeasure" Member="UnitOfMeasures">
+    <Type Name="UnitOfMeasure">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="PartPackage_UnitOfMeasure" Member="PartPackage" ThisKey="ID" OtherKey="dimensionUOM" Type="PartPackage" IsForeignKey="true" />
+      <Association Name="PartPackage_UnitOfMeasure1" Member="PartPackage1" ThisKey="ID" OtherKey="weightUOM" Type="PartPackage" IsForeignKey="true" />
+      <Association Name="PartPackage_UnitOfMeasure2" Member="PartPackage2" ThisKey="ID" OtherKey="packageUOM" Type="PartPackage" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartVideo" Member="PartVideos">
+    <Type Name="PartVideo">
+      <Column Name="pVideoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="video" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="vTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Part_PartVideo" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="catID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dateAdded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="parentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="catTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="shortDesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="longDesc" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="image" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="isLifestyle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vehicleSpecific" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Category_ContentBridge" Member="ContentBridges" ThisKey="catID" OtherKey="catID" Type="ContentBridge" />
+      <Association Name="Category_CatPart" Member="CatParts" ThisKey="catID" OtherKey="catID" Type="CatPart" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VehiclePart" Member="VehicleParts">
+    <Type Name="VehiclePart">
+      <Column Name="vPartID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="drilling" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="exposed" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="installTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Part_VehiclePart" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+      <Association Name="Vehicle_VehiclePart" Member="Vehicle" ThisKey="vehicleID" OtherKey="vehicleID" Type="Vehicle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CatPart" Member="CatParts">
+    <Type Name="CatPart">
+      <Column Name="catPartID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="catID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Category_CatPart" Member="Category" ThisKey="catID" OtherKey="catID" Type="Category" IsForeignKey="true" />
+      <Association Name="Part_CatPart" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Model" Member="Models">
+    <Type Name="Model">
+      <Column Name="modelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="model" Member="model1" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Model_Vehicle" Member="Vehicles" ThisKey="modelID" OtherKey="modelID" Type="Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Make" Member="Makes">
+    <Type Name="Make">
+      <Column Name="makeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="make" Member="make1" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Make_Vehicle" Member="Vehicles" ThisKey="makeID" OtherKey="makeID" Type="Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Style" Member="Styles">
+    <Type Name="Style">
+      <Column Name="styleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="style" Member="style1" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="aaiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Style_Vehicle" Member="Vehicles" ThisKey="styleID" OtherKey="styleID" Type="Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Year" Member="Years">
+    <Type Name="Year">
+      <Column Name="yearID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="year" Member="year1" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Year_Vehicle" Member="Vehicles" ThisKey="yearID" OtherKey="yearID" Type="Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vehicle" Member="Vehicles">
+    <Type Name="Vehicle">
+      <Column Name="vehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="yearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="makeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="modelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="styleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Vehicle_VehiclePart" Member="VehicleParts" ThisKey="vehicleID" OtherKey="vehicleID" Type="VehiclePart" />
+      <Association Name="Make_Vehicle" Member="Make" ThisKey="makeID" OtherKey="makeID" Type="Make" IsForeignKey="true" />
+      <Association Name="Model_Vehicle" Member="Model" ThisKey="modelID" OtherKey="modelID" Type="Model" IsForeignKey="true" />
+      <Association Name="Style_Vehicle" Member="Style" ThisKey="styleID" OtherKey="styleID" Type="Style" IsForeignKey="true" />
+      <Association Name="Year_Vehicle" Member="Year" ThisKey="yearID" OtherKey="yearID" Type="Year" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RelatedPart" Member="RelatedParts">
+    <Type Name="RelatedPart">
+      <Column Name="relPartID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="relatedID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="rTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Part_RelatedPart" Member="Part" ThisKey="partID" OtherKey="partID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Class" Member="Classes">
+    <Type Name="Class">
+      <Column Name="classID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="class" Member="class1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Part_Class" Member="Part" ThisKey="classID" OtherKey="classID" Type="Part" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerUser" Member="CustomerUsers">
+    <Type Name="CustomerUser">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="customerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_added" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="locationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isSudo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cust_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NotCustomer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerLoadsheets" Member="CustomerLoadsheets">
+    <Type Name="CustomerLoadsheet">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cust_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="CustomerLoadsheet_CustomerLoadsheetField" Member="CustomerLoadsheetFields" ThisKey="id" OtherKey="loadsheedID" Type="CustomerLoadsheetField" />
+      <Association Name="Customer_CustomerLoadsheet" Member="Customer" ThisKey="cust_ID" OtherKey="cust_id" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerLoadsheetFields" Member="CustomerLoadsheetFields">
+    <Type Name="CustomerLoadsheetField">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="loadsheedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="displayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerLoadsheetField_LoadsheetField" Member="LoadsheetFields" ThisKey="fieldID" OtherKey="id" Type="LoadsheetField" Cardinality="One" />
+      <Association Name="CustomerLoadsheet_CustomerLoadsheetField" Member="CustomerLoadsheet" ThisKey="loadsheedID" OtherKey="id" Type="CustomerLoadsheet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoadsheetFields" Member="LoadsheetFields">
+    <Type Name="LoadsheetField">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="defaultValue" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="loadsheetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CustomerLoadsheetField_LoadsheetField" Member="CustomerLoadsheetField" ThisKey="id" OtherKey="fieldID" Type="CustomerLoadsheetField" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

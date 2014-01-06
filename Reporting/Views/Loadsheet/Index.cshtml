@@ -1,0 +1,20 @@
+﻿@using Reporting.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+    List<CustomerLoadsheet> listofLoadsheets = ViewBag.loadsheets ?? new List<CustomerLoadsheet>();
+    
+}
+
+<h2>Customer Specific Loadsheets</h2>
+
+<form action="/Loadsheet/Customize" method="post" class="form-inline">
+
+    <select name="loadsheetID" id="loadsheetID">
+        <option value="0">Please Select Loadsheet</option>
+        @foreach (CustomerLoadsheet loadsheet in listofLoadsheets) {
+        <option value="@loadsheet.id">@loadsheet.name</option>
+        }
+    </select>
+    <input type="submit" value="Customize" name="submit" id="submit" class="btn btn-primary" />
+</form>

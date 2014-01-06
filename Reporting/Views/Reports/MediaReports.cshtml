@@ -1,0 +1,111 @@
+﻿@using Reporting.Models;
+@{
+    ViewBag.Title = "MediaReports";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+    var reportNames = ViewBag.reportNames;
+}
+<h2>CURT Reports</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#basic">Data</a>
+    </li>
+    <li>
+        <a href="#cat">Categories</a>
+    </li>
+        <li>
+        <a href="#tax">Media</a>
+    </li>
+
+</ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="basic">
+
+            <p>Product Information</p>
+
+            <form action="/reports/GenerateDataReport" method="post" class="form" id="piesreportform">
+
+                    <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date" />
+                    <span class="help-block"<p><small><em>*Leave blank for a complete product information report.</em></small></p></span>
+                    <div class="well well-large">
+                    <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                    </div>
+
+            </form>
+
+            <p>Vehicle Applications</p>
+            <p>
+            <b>Recommended</b> Download this vehicle applications report to complement to the product information report.
+            </p>
+
+            <form action="/reports/GenerateVehicleReport" method="post" class="form" id="piesreportform"">
+                <div class="control-group">
+                    <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date" />
+                    <span class="help-block"><small><em>*Leave blank for a complete applications report.</em></small></span>
+                </div>
+                <div class="control-group">
+                    <label for="method">
+                        Choose File Type
+                    </label>
+                    <select name="method" id="method">
+                        <option value="">- Choose File Type --</option>
+                        <option value="">XML</option>
+                        <option value="csv">CSV</option>
+                    </select>
+                </div>
+                    
+                    <div class="well well-large">
+                    <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                    </div>
+
+            </form>
+<<<<<<< HEAD
+        </div>
+   
+    <div class="tab-pane" id="cat">
+      <p>Curt Category Hierarchy</p>
+        <div>
+            <form action="/reports/CategoryReport" class="form">
+                <div class="well well-large">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                </div>
+            </form>
+=======
+>>>>>>> 3470eed291e82d0528a20fdfd4e1d7bda905ecec
+        </div>
+    </div>
+
+        <div class="tab-pane" id="tax">
+        
+            <p>Choose a Media Report:</p>
+
+            <div>
+            <form action="/reports/ChooseReports" class="form"> 
+            <table>        
+                @foreach (var x in reportNames)
+                    {
+                        <ul>
+                           <input type="checkbox" name="reportname" value="@x"/> @x
+                        </ul>
+                    }
+            </table>
+                <div class="well well-large">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                </div>
+            </form>
+
+            <!--<form action="/reports/GeneratePIES" method="post" class="form" id="piesreportform">
+              
+                <input type="text" name="startdate" class="piesdatepicker" value="" placeholder="Optional Start Date" />
+                <span class="help-block"<p><small><em>*Leave blank for a complete applications report.</em></small></p></span>
+                <div class="well well-large">
+                <input type="submit" class="btn btn-large btn-info btn-generate" value="Generate">
+                </div>
+            </form>-->
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,30 @@
+﻿@using Reporting.Models;
+
+@{
+    ViewBag.Title = "Customize";
+    Layout = "~/Views/Shared/Reporting.cshtml";
+    CustomerLoadsheet loadsheet = ViewBag.loadsheet ?? new CustomerLoadsheet();
+    List<LoadsheetField> masterFieldList = ViewBag.masterFieldList ?? new List<LoadsheetField>();
+    List<LoadsheetField> customerFieldList = ViewBag.customerFieldList ?? new List<LoadsheetField>();
+}
+<style>
+    #fieldIDs
+    {
+        width:600px;
+    }
+</style>
+<h2>Customize @(loadsheet.name)'s Loadsheet</h2>
+
+<form action="/Loadsheet/GenerateXLS/@loadsheet.id" method="post" class="form">
+    <label for="strDateAdded">Date Added</label>
+        <input type="text" class="datePicker" id="strDateAdded" name="strDateAdded" value="" placeholder="Example: 12/30/2012" /> 
+    <label for="fieldIDs">Loadsheet fields: <em>- All Selected by Default</em></label> 
+        <select multiple name="fieldIDs" id="fieldIDs">
+            @foreach(LoadsheetField field in customerFieldList){
+                <option selected="selected" value="@field.id">@field.name - @field.description</option>
+            }
+        </select>
+    
+    <br />
+    <input type="submit" value="Generate Loadsheet" name="submit" id="submit" class="btn btn-primary" />
+</form>

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsbXEE5MuokimGVySQcAbqQAAAAACAAAAAAADZgAAwAAAABAAAACi/YUsZXcLcQir/0to1YTqAAAAAASAAACgAAAAEAAAADpMe7a9ChUoTQoGJkQGM1sQAAAARMAF9NCQPr7+VLbJf5lqihQAAAB+TDq89o0BdxDvdyS2vZPtWgR6BQ==</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AAIA/pcdb.dbml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="AAIA/qdb.dbml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="AAIA/VCDB.dbml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>08/01/2013 11:40:45</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>08/01/2013 11:40:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/01/2013 11:40:44</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>08/01/2013 11:40:43</publishTime>
+    </File>
+    <File Include="bin/Reporting.dll">
+      <publishTime>08/22/2013 10:06:02</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>08/01/2013 11:40:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>08/01/2013 11:40:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>08/01/2013 11:40:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>08/01/2013 11:40:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>08/01/2013 11:40:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>08/01/2013 11:40:42</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>08/01/2013 11:40:45</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap-responsive.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/main.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/MeganStyle.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/normalize.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-icons_222222_256x240.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-icons_454545_256x240.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-icons_888888_256x240.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/css/smoothness/jquery-ui.css">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/curtLogo_onWhite.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/glyphicons-halflings-white.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/glyphicons-halflings.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/light_wool.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/logo-notag.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Content/img/logo.png">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Models/CurtDev.dbml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.3.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.3.min.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/main.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.1.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/reportsHelpInfo.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/vendor/bootstrap.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/vendor/bootstrap.min.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/vendor/jquery-ui.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/vendor/jquery.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Scripts/vendor/plugins.js">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Authenticate/Index.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Loadsheet/Customize.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Loadsheet/Index.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Reports/ACES.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Reports/CURTReports.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Reports/GoogleBase.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Reports/Index.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Reports/PIES.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Shared/Reporting.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>08/01/2013 11:40:40</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/22/2013 09:50:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
